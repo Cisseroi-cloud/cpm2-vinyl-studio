@@ -19,6 +19,7 @@ import math
 import os
 import re
 import struct
+import sys
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
@@ -26,7 +27,10 @@ import numpy as np
 import UnityPy
 from UnityPy.export.MeshExporter import MeshHandler
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
+if getattr(sys, "frozen", False):
+    REPO_ROOT = Path(sys.executable).resolve().parents[1]
+else:
+    REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CACHE_DIR = REPO_ROOT / "cache" / "cars"
 SUBPATH_BUNDLES = Path("Car Parking 2_Data") / "StreamingAssets" / "aa" / "StandaloneWindows64"
 

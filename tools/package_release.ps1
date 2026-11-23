@@ -1,5 +1,7 @@
 param(
-    [switch]$CreateZip
+    [switch]$CreateZip,
+    [switch]$BundleExporterExe,
+    [string]$Version = "v1.0.0"
 )
 $ErrorActionPreference = "Stop"
 $root = Split-Path -Parent $PSScriptRoot
@@ -14,6 +16,28 @@ New-Item -ItemType Directory -Force `
     (Join-Path $dist "cache\cars"), `
     (Join-Path $dist "work") | Out-Null
 
+# Optional: build standalone zero-Python export_car_3d.exe via PyInstaller so end-users need NOTHING installed!
+$exporterExe = Join-Path $root "tools\build\export_car_3d.exe"
+if ($BundleExporterExe -or (Test-Path $exporterExe)) {
+    if ($BundleExporterExe -or !(Test-Path $exporterExe)) {
+        Write-Host "Building standalone zero-Python bin/export_car_3d.exe (PyInstaller)..."
+        $pyBuild = Join-Path $root "tools\build"
+        New-Item -ItemType Directory -Force $pyBuild | Out-Null
+        python -m PyInstaller --noconfirm --onefile --console `
+            --name export_car_3d `
+            --distpath $pyBuild `
+            --workpath (Join-Path $pyBuild "pyi_work") `
+            --specpath $pyBuild `
+            --collect-all UnityPy `
+            --collect-all fmod_toolkit `
+            --collect-all archspec `
+            --collect-all fsspec `
+            (Join-Path $root "tools\export_car_3d.py")
+        if ($LASTEXITCODE -ne 0) { throw "PyInstaller build failed ($LASTEXITCODE)" }
+    }
+    Copy-Item $exporterExe (Join-Path $dist "bin\export_car_3d.exe")
+}
+
 # Copy ONLY clean runtime binaries, sprite masks, exporter script & documentation
 # (ZERO personal images, ZERO work/art_v4_*, ZERO logs, ZERO personal studio_config.json!)
 Copy-Item (Join-Path $root "studio\build\cpm2_studio.exe") (Join-Path $dist "cpm2_studio.exe")
@@ -26,12 +50,36 @@ Copy-Item (Join-Path $root "studio\README.md") (Join-Path $dist "README.md")
 Copy-Item (Join-Path $root "tools\geometrize_cli\sprites_v4\*.a256") (Join-Path $dist "sprites_v4\")
 Copy-Item (Join-Path $root "tools\geometrize_cli\sprites_v4\sprites_meta.json") (Join-Path $dist "sprites_v4\")
 
-# Create convenient double-click launcher
+# Create super-simple double-click launcher + plain-text quickstart for non-technical users
 @"
 @echo off
 cd /d "%~dp0"
 start "" "%~dp0cpm2_studio.exe"
 "@ | Set-Content -Path (Join-Path $dist "Lancer_CPM2_Vinyl_Studio.bat") -Encoding ASCII
+
+@"
+============================================================
+  CPM2 VINYL STUDIO ($Version) - VERSION PORTABLE PRETE A L'EMPLOI
+============================================================
+
+RIEN A INSTALLER ! NI PYTHON, NI COMPILATION !
+
+1. Extrayez tout le contenu de ce ZIP dans un dossier (ex: sur votre Bureau).
+2. Double-cliquez sur : Lancer_CPM2_Vinyl_Studio.bat
+3. Le logiciel detecte automatiquement votre jeu Car Parking Multiplayer 2 (Steam).
+   (Si besoin : Menu Projet -> Choisir dossier du jeu CPM 2 -> Car Parking 2.exe)
+4. Dans le panneau de gauche :
+   - Cliquez '+ Image (PNG/JPG)' pour importer votre image.
+   - Si le jeu est lance, le statut passe en vert 'Jeu EN LIGNE' et liste vos voitures.
+5. Dans le panneau de droite :
+   - Cliquez un Preset 1-clic (ex: 'Anime Portrait HD' ou 'Ultra Visage (2x2)').
+   - Cliquez 'Lancer Auto-Converge HQ' et laissez le logiciel converger tout seul.
+6. Placez votre image en 3D sur la voiture (W/E/R, Shift+Clic pour coller sur un panneau).
+7. Cliquez sur le bouton vert 'Injecter en Jeu (Atomique)' !
+   (Une sauvegarde automatique de vos vinyles est creee dans le dossier work\backups\)
+
+Guide complet avec tous les curseurs : voir README.md ou le bouton 'Guide (?)' dans l'app.
+"@ | Set-Content -Path (Join-Path $dist "LISEZ_MOI.txt") -Encoding UTF8
 
 # Verify zero hardcoded personal paths or personal files leaked into dist/
 $bad = Get-ChildItem $dist -Recurse -File | Where-Object {
@@ -42,11 +90,11 @@ if ($bad) {
 }
 
 $totalMB = ((Get-ChildItem $dist -Recurse -File | Measure-Object -Property Length -Sum).Sum / 1MB)
-Write-Host ("Package portable propre cree : {0} ({1:N2} MB, 0 fichier personnel)" -f $dist, $totalMB)
+Write-Host ("Package portable autonome cree : {0} ({1:N2} MB, 0 fichier personnel)" -f $dist, $totalMB)
 
 if ($CreateZip) {
-    $zipPath = Join-Path $root "dist\CPM2_Vinyl_Studio.zip"
+    $zipPath = Join-Path $root ("dist\CPM2_Vinyl_Studio_" + $Version + "_Portable.zip")
     if (Test-Path $zipPath) { Remove-Item $zipPath -Force }
     Compress-Archive -Path "$dist\*" -DestinationPath $zipPath -CompressionLevel Optimal
-    Write-Host ("Archive ZIP prete a partager : {0} ({1:N2} MB)" -f $zipPath, ((Get-Item $zipPath).Length / 1MB))
+    Write-Host ("Archive ZIP prete pour Release : {0} ({1:N2} MB)" -f $zipPath, ((Get-Item $zipPath).Length / 1MB))
 }

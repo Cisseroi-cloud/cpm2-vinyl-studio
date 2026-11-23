@@ -113,16 +113,23 @@ struct StudioApp {
         }
     }
 
+    std::string buildExporterCommand(const std::string& args) const {
+        fs::path exe = fs::path(rootDir) / "bin" / "export_car_3d.exe";
+        if (fs::exists(exe)) {
+            return "\"" + exe.string() + "\" " + args;
+        }
+        return "python \"" + (fs::path(rootDir) / "tools" / "export_car_3d.py").string() + "\" " + args;
+    }
+
     void loadCatalogCarIds() {
         availableCarIds.clear();
         fs::path catP = fs::path(rootDir) / "cache" / "cars" / "catalog.json";
         if (!fs::exists(catP) && isValidGameDir(config.gameDir)) {
-            std::string cmd = "python \"" + (fs::path(rootDir) / "tools" / "export_car_3d.py").string() +
-                              "\" --game-dir \"" + config.gameDir + "\" --list-json \"" + catP.string() + "\"";
+            std::string cmd = buildExporterCommand("--game-dir \"" + config.gameDir + "\" --list-json \"" + catP.string() + "\"");
             STARTUPINFOA si{}; si.cb = sizeof(si); si.dwFlags = STARTF_USESHOWWINDOW; si.wShowWindow = SW_HIDE;
             PROCESS_INFORMATION pi{};
             if (CreateProcessA(nullptr, cmd.data(), nullptr, nullptr, FALSE, CREATE_NO_WINDOW, nullptr, rootDir.c_str(), &si, &pi)) {
-                WaitForSingleObject(pi.hProcess, 15000);
+                WaitForSingleObject(pi.hProcess, 30000);
                 CloseHandle(pi.hProcess); CloseHandle(pi.hThread);
             }
         }
@@ -149,12 +156,11 @@ struct StudioApp {
                 return false;
             }
             statusBanner = "Extraction 3D du vehicule car" + std::to_string(carId) + " depuis les bundles du jeu...";
-            std::string cmd = "python \"" + (fs::path(rootDir) / "tools" / "export_car_3d.py").string() +
-                              "\" --game-dir \"" + config.gameDir + "\" " + std::to_string(carId);
+            std::string cmd = buildExporterCommand("--game-dir \"" + config.gameDir + "\" --out \"" + carFile.string() + "\" " + std::to_string(carId));
             STARTUPINFOA si{}; si.cb = sizeof(si); si.dwFlags = STARTF_USESHOWWINDOW; si.wShowWindow = SW_HIDE;
             PROCESS_INFORMATION pi{};
             if (CreateProcessA(nullptr, cmd.data(), nullptr, nullptr, FALSE, CREATE_NO_WINDOW, nullptr, rootDir.c_str(), &si, &pi)) {
-                WaitForSingleObject(pi.hProcess, 30000);
+                WaitForSingleObject(pi.hProcess, 45000);
                 CloseHandle(pi.hProcess);
                 CloseHandle(pi.hThread);
             }

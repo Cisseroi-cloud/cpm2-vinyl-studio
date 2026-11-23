@@ -32,7 +32,10 @@ powershell -ExecutionPolicy Bypass -File studio\build.ps1
 powershell -ExecutionPolicy Bypass -File tools\package_release.ps1 -CreateZip
 ```
 
-## Utilisation
+## Utilisation rapide (Release clé en main — rien à installer)
+Téléchargez **`CPM2_Vinyl_Studio_v1.0.0_Portable.zip`** dans l'onglet **Releases** de ce dépôt, décompressez-le puis double-cliquez sur **`Lancer_CPM2_Vinyl_Studio.bat`**. Aucune installation (ni Python, ni Visual Studio) n'est requise : tout est déjà compilé et autonome.
+
+## Utilisation (depuis les sources)
 1. Lancez `studio\build\cpm2_studio.exe` (ou `Lancer_CPM2_Vinyl_Studio.bat` depuis la Release).
 2. Le dossier d'installation Steam de CPM 2 est détecté automatiquement (sinon : **Menu `Projet` → `Choisir dossier du jeu CPM 2...`**).
 3. Choisissez l'instance exacte du véhicule dans le panneau **Garage**, importez une image (`+ Image`), appliquez un preset 1-clic et lancez **Auto-Converge HQ**.
