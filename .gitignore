@@ -1,0 +1,48 @@
+# Binaires compiles et artefacts de build
+*.exe
+*.dll
+*.obj
+*.o
+*.lib
+*.pdb
+*.exp
+*.ilk
+*.idb
+*.ipdb
+*.iobj
+build/
+**/build/
+dist/
+
+# Logs, sauvegardes et fichiers temporaires
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+__pycache__/
+*.py[cod]
+.vs/
+.vscode/
+
+# Configuration locale, caches et fichiers personnels
+work/
+cache/
+calibration/
+reference/
+third_party/
+studio_config.json
+imgui.ini
+*.cpmcar
+*.cpmproj.json
+
+# Notes de travail internes (chemins locaux)
+HANDOVER.md
+DIAGNOSTIC.md
+CALIBRATION.md
+
+# Anciens masques basse resolution / previews non necessaires a la compilation
+tools/geometrize_cli/sprites/
+tools/geometrize_cli/sprites_hr/
+tools/geometrize_cli/sprites_v4/*.a64
+tools/geometrize_cli/sprites_v4/*.png

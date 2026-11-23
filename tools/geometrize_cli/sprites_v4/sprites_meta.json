@@ -1,0 +1,302 @@
+[
+  {
+    "index": 87,
+    "sprite": "STICKERS_NEW_3",
+    "texture": "STICKERS_NEW",
+    "category": 0,
+    "allow_flip": false,
+    "native_w": 0.0245,
+    "native_h": 0.0244,
+    "ppu": 5000.0,
+    "rect_px": [
+      122.5,
+      122
+    ],
+    "mask_file": "sprite_87.a64"
+  },
+  {
+    "index": 89,
+    "sprite": "STICKERS_NEW_2",
+    "texture": "STICKERS_NEW",
+    "category": 0,
+    "allow_flip": false,
+    "native_w": 0.0245,
+    "native_h": 0.0244,
+    "ppu": 5000.0,
+    "rect_px": [
+      122.5,
+      122
+    ],
+    "mask_file": "sprite_89.a64"
+  },
+  {
+    "index": 95,
+    "sprite": "STICKERS_NEW_21",
+    "texture": "STICKERS_NEW",
+    "category": 0,
+    "allow_flip": false,
+    "native_w": 0.0269,
+    "native_h": 0.023,
+    "ppu": 5000.0,
+    "rect_px": [
+      134.5,
+      115
+    ],
+    "mask_file": "sprite_95.a64"
+  },
+  {
+    "index": 97,
+    "sprite": "STICKERS_NEW_5",
+    "texture": "STICKERS_NEW",
+    "category": 0,
+    "allow_flip": false,
+    "native_w": 0.0367,
+    "native_h": 0.0242,
+    "ppu": 5000.0,
+    "rect_px": [
+      183.5,
+      121
+    ],
+    "mask_file": "sprite_97.a64"
+  },
+  {
+    "index": 5,
+    "sprite": "STICKERS2_2",
+    "texture": "main car sticker",
+    "category": 0,
+    "allow_flip": false,
+    "native_w": 0.024,
+    "native_h": 0.0228,
+    "ppu": 10000.0,
+    "rect_px": [
+      240,
+      228
+    ],
+    "mask_file": "sprite_5.a64"
+  },
+  {
+    "index": 6,
+    "sprite": "STICKERS2_8",
+    "texture": "main car sticker",
+    "category": 0,
+    "allow_flip": false,
+    "native_w": 0.0296,
+    "native_h": 0.0206,
+    "ppu": 10000.0,
+    "rect_px": [
+      296,
+      206
+    ],
+    "mask_file": "sprite_6.a64"
+  },
+  {
+    "index": 4,
+    "sprite": "STICKERS2_1",
+    "texture": "main car sticker",
+    "category": 0,
+    "allow_flip": true,
+    "native_w": 0.0304,
+    "native_h": 0.0204,
+    "ppu": 10000.0,
+    "rect_px": [
+      304,
+      204
+    ],
+    "mask_file": "sprite_4.a64"
+  },
+  {
+    "index": 9,
+    "sprite": "STICKERS2_10",
+    "texture": "main car sticker",
+    "category": 0,
+    "allow_flip": false,
+    "native_w": 0.026,
+    "native_h": 0.0124,
+    "ppu": 10000.0,
+    "rect_px": [
+      260,
+      124
+    ],
+    "mask_file": "sprite_9.a64"
+  },
+  {
+    "index": 103,
+    "sprite": "STICKERS_NEW_22",
+    "texture": "STICKERS_NEW",
+    "category": 0,
+    "allow_flip": false,
+    "native_w": 0.0261,
+    "native_h": 0.0236,
+    "ppu": 5000.0,
+    "rect_px": [
+      130.5,
+      118
+    ],
+    "mask_file": "sprite_103.a64"
+  },
+  {
+    "index": 125,
+    "sprite": "STICKERS_NEW_2023_1",
+    "texture": "STICKERS_NEW_2023",
+    "category": 1,
+    "allow_flip": false,
+    "native_w": 0.0502,
+    "native_h": 0.054,
+    "ppu": 10000.0,
+    "rect_px": [
+      502,
+      540
+    ],
+    "mask_file": "sprite_125.a64"
+  },
+  {
+    "index": 124,
+    "sprite": "STICKERS_NEW_2023_0",
+    "texture": "STICKERS_NEW_2023",
+    "category": 1,
+    "allow_flip": false,
+    "native_w": 0.044,
+    "native_h": 0.0571,
+    "ppu": 10000.0,
+    "rect_px": [
+      440,
+      571
+    ],
+    "mask_file": "sprite_124.a64"
+  },
+  {
+    "index": 18,
+    "sprite": "main car sticker_0",
+    "texture": "main car sticker",
+    "category": 1,
+    "allow_flip": true,
+    "native_w": 0.1063,
+    "native_h": 0.0169,
+    "ppu": 10000.0,
+    "rect_px": [
+      1063,
+      169
+    ],
+    "mask_file": "sprite_18.a64"
+  },
+  {
+    "index": 127,
+    "sprite": "STICKERS_NEW_2023_3",
+    "texture": "STICKERS_NEW_2023",
+    "category": 1,
+    "allow_flip": true,
+    "native_w": 0.0443,
+    "native_h": 0.0441,
+    "ppu": 10000.0,
+    "rect_px": [
+      443,
+      441
+    ],
+    "mask_file": "sprite_127.a64"
+  },
+  {
+    "index": 128,
+    "sprite": "STICKERS_NEW_2023_4",
+    "texture": "STICKERS_NEW_2023",
+    "category": 1,
+    "allow_flip": true,
+    "native_w": 0.0681,
+    "native_h": 0.0578,
+    "ppu": 10000.0,
+    "rect_px": [
+      681,
+      578
+    ],
+    "mask_file": "sprite_128.a64"
+  },
+  {
+    "index": 130,
+    "sprite": "STICKERS_NEW_2023_6",
+    "texture": "STICKERS_NEW_2023",
+    "category": 2,
+    "allow_flip": true,
+    "native_w": 0.0416,
+    "native_h": 0.0554,
+    "ppu": 10000.0,
+    "rect_px": [
+      416,
+      554
+    ],
+    "mask_file": "sprite_130.a64"
+  },
+  {
+    "index": 101,
+    "sprite": "STICKERS_NEW_18",
+    "texture": "STICKERS_NEW",
+    "category": 2,
+    "allow_flip": false,
+    "native_w": 0.0133,
+    "native_h": 0.0251,
+    "ppu": 5000.0,
+    "rect_px": [
+      66.5,
+      125.5
+    ],
+    "mask_file": "sprite_101.a64"
+  },
+  {
+    "index": 100,
+    "sprite": "STICKERS_NEW_17",
+    "texture": "STICKERS_NEW",
+    "category": 2,
+    "allow_flip": true,
+    "native_w": 0.0246,
+    "native_h": 0.0248,
+    "ppu": 5000.0,
+    "rect_px": [
+      123,
+      124
+    ],
+    "mask_file": "sprite_100.a64"
+  },
+  {
+    "index": 90,
+    "sprite": "STICKERS_NEW_1",
+    "texture": "STICKERS_NEW",
+    "category": 2,
+    "allow_flip": false,
+    "native_w": 0.0243,
+    "native_h": 0.0244,
+    "ppu": 5000.0,
+    "rect_px": [
+      121.5,
+      122
+    ],
+    "mask_file": "sprite_90.a64"
+  },
+  {
+    "index": 11,
+    "sprite": "STICKERS2_57",
+    "texture": "main car sticker",
+    "category": 2,
+    "allow_flip": false,
+    "native_w": 0.0157,
+    "native_h": 0.0152,
+    "ppu": 10000.0,
+    "rect_px": [
+      157,
+      152
+    ],
+    "mask_file": "sprite_11.a64"
+  },
+  {
+    "index": 8,
+    "sprite": "STICKERS2_3",
+    "texture": "main car sticker",
+    "category": 2,
+    "allow_flip": true,
+    "native_w": 0.0422,
+    "native_h": 0.0195,
+    "ppu": 10000.0,
+    "rect_px": [
+      422,
+      195
+    ],
+    "mask_file": "sprite_8.a64"
+  }
+]
